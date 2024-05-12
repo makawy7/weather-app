@@ -11,14 +11,14 @@ const TabbarItems = () => {
   const trapeziodWidth = width * 0.68
   const trapeziodHeight = height * 0.12
   const circleRadius = (trapeziodHeight * 0.51) / 2
-  const buttonCenterX = width / 2 - circleRadius * 2
+  const buttonCenterX = width / 2 - circleRadius
   return (
     <View
       style={{
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: 32,
+        paddingHorizontal: 32,
         alignItems: 'center',
       }}
     >
