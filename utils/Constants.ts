@@ -1,0 +1,1 @@
+export const DEGRE_SYMBOL = '\u00B0'
