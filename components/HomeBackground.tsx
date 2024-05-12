@@ -21,7 +21,7 @@ const HomeBackground = () => {
   const myStyle = styles(dimensions);
   const smokeOffsetY = height * 0.4;
   const smokeHeight = height * 0.6;
-  console.log(height);
+
   return (
     <View style={{ ...StyleSheet.absoluteFillObject }}>
       <Canvas style={{ flex: 1 }}>

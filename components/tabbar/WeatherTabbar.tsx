@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import ArcComponent from './elements/ArcComponent'
 import useApplicationDimensions from '../../hooks/useApplicationDimensions'
 import TabbarItems from './elements/TabbarItems'
-import TrapeziodBackground from './elements/TrapeziodBackground'
 
 const WeatherTabbar = () => {
   const { height, width } = useApplicationDimensions()
   const tabbarHeight = height * 0.1
+  
   return (
     <View
       style={{
