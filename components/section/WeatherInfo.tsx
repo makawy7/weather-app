@@ -11,7 +11,7 @@ type WeatherInfoProps = {
 
 const WeatherInfo: React.FC<WeatherInfoProps> = ({ weather }) => {
   const { city, temperature, condition, high, low } = weather
-  const { height, width } = useApplicationDimensions()
+  const { height } = useApplicationDimensions()
   const infoHeight = height * 0.2168246445
   const { top } = useSafeAreaInsets()
   const InfoTopMargin = top + 51
