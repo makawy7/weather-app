@@ -38,8 +38,8 @@ const ForecastControl: React.FC<ForecastControlProps> = ({
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddingHorizontal: spacingX,
           height: textHeight,
+          paddingHorizontal: spacingX,
         }}
       >
         <TouchableOpacity onPress={() => onPress(ForecastType.Hourly)}>
