@@ -5,14 +5,14 @@ import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia'
 import { DEGRE_SYMBOL } from '../../utils/Constants'
 import { convertDateTo12HrFormat, getDayOfWeek } from '../../utils/DateHelper'
 
-type ForcastCapsuleProps = {
+type ForecastCapsuleProps = {
   forecast: Forecast
   width: number
   height: number
   radius: number
 }
 
-const ForecastCapsule: React.FC<ForcastCapsuleProps> = ({
+const ForecastCapsule: React.FC<ForecastCapsuleProps> = ({
   forecast,
   width,
   height,

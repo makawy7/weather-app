@@ -9,13 +9,13 @@ import React, { useState } from 'react'
 import { Canvas, Line, LinearGradient, vec } from '@shopify/react-native-skia'
 import { ForecastType } from '../../../models/Weather'
 
-type ForcastControlProps = {
+type ForecastControlProps = {
   onPress: (forecastType: ForecastType) => void
   selectedForecast: ForecastType
   width: number
 }
 
-const ForcastControl: React.FC<ForcastControlProps> = ({
+const ForecastControl: React.FC<ForecastControlProps> = ({
   onPress,
   width,
   selectedForecast,
@@ -43,12 +43,12 @@ const ForcastControl: React.FC<ForcastControlProps> = ({
         }}
       >
         <TouchableOpacity onPress={() => onPress(ForecastType.Hourly)}>
-          <Text onLayout={onTextLayout} style={styles.forcastText}>
-            Hourly Forcast
+          <Text onLayout={onTextLayout} style={styles.forecastText}>
+            Hourly Forecast
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onPress(ForecastType.Weekly)}>
-          <Text style={styles.forcastText}>Weekly Forcast</Text>
+          <Text style={styles.forecastText}>Weekly Forecast</Text>
         </TouchableOpacity>
       </View>
       <Canvas
@@ -72,10 +72,10 @@ const ForcastControl: React.FC<ForcastControlProps> = ({
   )
 }
 
-export default ForcastControl
+export default ForecastControl
 
 const styles = StyleSheet.create({
-  forcastText: {
+  forecastText: {
     fontFamily: 'SF-Semibold',
     fontSize: 15,
     lineHeight: 20,

@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import BottomSheet from '@gorhom/bottom-sheet'
-import ForcastSheetBackground from './ForcastSheetBackground'
+import ForecastSheetBackground from './ForecastSheetBackground'
 import useApplicationDimensions from '../../hooks/useApplicationDimensions'
-import ForcastControl from './elements/ForcastControl'
+import ForecastControl from './elements/ForecastControl'
 import Seperator from './elements/Seperator'
 import { hourly, weekly } from '../../data/ForecastData'
-import ForecastScroll from '../forcast/ForecastScroll'
+import ForecastScroll from '../forecast/ForecastScroll'
 import { ForecastType } from '../../models/Weather'
 
-const ForcastSheet = () => {
+const ForecastSheet = () => {
   const { width, height } = useApplicationDimensions()
   const snapPoints = ['38.5%', '86%']
   const firstSnapPoint = height * (parseFloat(snapPoints[0]) / 100)
@@ -17,7 +17,7 @@ const ForcastSheet = () => {
   const capsuleRadius = 30
   const capsuleHeight = height * 0.17
   const capsuleWidth = width * 0.15
-  const [selectedForecast, setSelectedForcast] = useState<ForecastType>(
+  const [selectedForecast, setSelectedForecast] = useState<ForecastType>(
     ForecastType.Hourly
   )
   return (
@@ -29,18 +29,18 @@ const ForcastSheet = () => {
         backgroundColor: 'rgba(0,0,0,0,.3)',
       }}
       backgroundComponent={() => (
-        <ForcastSheetBackground
+        <ForecastSheetBackground
           width={width}
           height={firstSnapPoint}
           cornerRadius={cornerRadius}
         />
       )}
     >
-      <ForcastControl
+      <ForecastControl
         selectedForecast={selectedForecast}
         width={width}
         onPress={(forecasttype: ForecastType) => {
-          setSelectedForcast(forecasttype)
+          setSelectedForecast(forecasttype)
         }}
       />
       <Seperator width={width} height={3} />
@@ -54,6 +54,6 @@ const ForcastSheet = () => {
   )
 }
 
-export default ForcastSheet
+export default ForecastSheet
 
 const styles = StyleSheet.create({})

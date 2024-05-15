@@ -9,13 +9,13 @@ import {
 } from '@shopify/react-native-skia'
 import { BlurView } from 'expo-blur'
 
-type ForcastSheetBackgroundProps = {
+type ForecastSheetBackgroundProps = {
   width: number
   height: number
   cornerRadius: number
 }
 
-const ForcastSheetBackground: React.FC<ForcastSheetBackgroundProps> = ({
+const ForecastSheetBackground: React.FC<ForecastSheetBackgroundProps> = ({
   width,
   height,
   cornerRadius,
@@ -55,6 +55,6 @@ const ForcastSheetBackground: React.FC<ForcastSheetBackgroundProps> = ({
   )
 }
 
-export default ForcastSheetBackground
+export default ForecastSheetBackground
 
 const styles = StyleSheet.create({})
