@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import BottomSheet from '@gorhom/bottom-sheet'
 import ForcastSheetBackground from './ForcastSheetBackground'
 import useApplicationDimensions from '../../hooks/useApplicationDimensions'
 import ForcastControl from './elements/ForcastControl'
 import Seperator from './elements/Seperator'
-import ForcastCapsule from '../forcast/ForecastCapsule'
-import { hourly } from '../../data/ForecastData'
+import { hourly, weekly } from '../../data/ForecastData'
 import ForecastScroll from '../forcast/ForecastScroll'
+import { ForecastType } from '../../models/Weather'
 
 const ForcastSheet = () => {
   const { width, height } = useApplicationDimensions()
@@ -17,6 +17,9 @@ const ForcastSheet = () => {
   const capsuleRadius = 30
   const capsuleHeight = height * 0.17
   const capsuleWidth = width * 0.15
+  const [selectedForecast, setSelectedForcast] = useState<ForecastType>(
+    ForecastType.Hourly
+  )
   return (
     <BottomSheet
       snapPoints={snapPoints}
@@ -33,10 +36,16 @@ const ForcastSheet = () => {
         />
       )}
     >
-      <ForcastControl />
+      <ForcastControl
+        selectedForecast={selectedForecast}
+        width={width}
+        onPress={(forecasttype: ForecastType) => {
+          setSelectedForcast(forecasttype)
+        }}
+      />
       <Seperator width={width} height={3} />
       <ForecastScroll
-        forecasts={hourly}
+        forecasts={selectedForecast === ForecastType.Hourly ? hourly : weekly}
         capsuleWidth={capsuleWidth}
         capsuleHeight={capsuleHeight}
         capsuleRadius={capsuleRadius}

@@ -7,15 +7,31 @@ import {
 } from 'react-native'
 import React, { useState } from 'react'
 import { Canvas, Line, LinearGradient, vec } from '@shopify/react-native-skia'
+import { ForecastType } from '../../../models/Weather'
 
-const ForcastControl = () => {
+type ForcastControlProps = {
+  onPress: (forecastType: ForecastType) => void
+  selectedForecast: ForecastType
+  width: number
+}
+
+const ForcastControl: React.FC<ForcastControlProps> = ({
+  onPress,
+  width,
+  selectedForecast,
+}) => {
   const [textWidth, setTextWidth] = useState(0)
   const onTextLayout = (event: LayoutChangeEvent) => {
     setTextWidth(event.nativeEvent.layout.width)
   }
   const textHeight = 22
   const spacingX = 32
+  const underlineSpacingLeft =
+    selectedForecast === ForecastType.Hourly
+      ? spacingX
+      : width - (spacingX + textWidth)
   const strokeWidth = 5
+  
   return (
     <>
       <View
@@ -26,12 +42,12 @@ const ForcastControl = () => {
           height: textHeight,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => onPress(ForecastType.Hourly)}>
           <Text onLayout={onTextLayout} style={styles.forcastText}>
             Hourly Forcast
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => onPress(ForecastType.Weekly)}>
           <Text style={styles.forcastText}>Weekly Forcast</Text>
         </TouchableOpacity>
       </View>
@@ -39,8 +55,8 @@ const ForcastControl = () => {
         style={{
           width: textWidth,
           height: strokeWidth,
-          marginLeft: spacingX,
           ...StyleSheet.absoluteFillObject,
+          left: underlineSpacingLeft,
           top: textHeight,
         }}
       >
@@ -48,11 +64,7 @@ const ForcastControl = () => {
           <LinearGradient
             start={vec(0, 0)}
             end={vec(textWidth, 0)}
-            colors={[
-              'rgba(147,112,177,0)',
-              '#b07edb',
-              'rgba(147,112,177,0)',
-            ]}
+            colors={['rgba(147,112,177,0)', '#b07edb', 'rgba(147,112,177,0)']}
           />
         </Line>
       </Canvas>
