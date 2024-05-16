@@ -1,6 +1,12 @@
-import { Canvas, LinearGradient, Path, vec } from '@shopify/react-native-skia'
+import {
+  Blur,
+  Canvas,
+  LinearGradient,
+  Path,
+  vec,
+} from '@shopify/react-native-skia'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 type ArcProps = {
   tabbarHeight: number
@@ -18,14 +24,15 @@ const ArcComponent: React.FC<ArcProps> = ({ tabbarHeight, width }) => {
         <LinearGradient
           start={vec(width / 2, 0)}
           end={vec(width / 2, tabbarHeight)}
-          colors={['rgba(58,58,106,0.26)', 'rgba(37,36,76,0.26)']}
+          colors={['rgba(58,58,106,0.9)', 'rgba(37,36,76,0.9)']}
         />
+        <Blur blur={1} />
       </Path>
       <Path
         path={arcBorder}
         style="stroke"
         strokeWidth={0.5}
-        color={'rgba(117,130,244,0.5)'}
+        color={'rgba(117,130,244,0.8)'}
       />
     </Canvas>
   )

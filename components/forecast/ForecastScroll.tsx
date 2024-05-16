@@ -18,11 +18,21 @@ const ForecastScroll: React.FC<ForecastScrollProps> = ({
   capsuleRadius,
 }) => {
   return (
-    <ScrollView
-      horizontal
-      style={{ paddingTop: 20, paddingLeft: 20, paddingBottom: 10 }}
-    >
-      <View style={{ flexDirection: 'row', gap: 12 }}>
+    <>
+      <ScrollView
+        horizontal
+        style={{
+          paddingTop: 20,
+          paddingLeft: 20,
+          paddingBottom: 10,
+          flexGrow: 0,
+        }}
+        contentContainerStyle={{
+          flex: 1,
+          flexDirection: 'row',
+          gap: 12,
+        }}
+      >
         {forecasts.map((forecast, index) => (
           <ForecastCapsule
             key={index}
@@ -32,8 +42,8 @@ const ForecastScroll: React.FC<ForecastScrollProps> = ({
             radius={capsuleRadius}
           />
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   )
 }
 
