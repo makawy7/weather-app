@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import React from 'react'
 import Widget, { WidgetDimensionProps } from './base/Widget'
 import { AntDesign, Entypo } from '@expo/vector-icons'
@@ -21,7 +21,8 @@ const AirQualityWidget: React.FC<WidgetDimensionProps> = ({
         Icon={Entypo}
         iconProps={{ name: 'air' }}
       />
-      <Widget.Body text="3-Low Health Risk">
+      <Widget.Body>
+        <Text style={styles.regularText}>3-Low Health Risk</Text>
         <Canvas
           style={{
             height: 15,
@@ -65,4 +66,11 @@ const AirQualityWidget: React.FC<WidgetDimensionProps> = ({
 
 export default AirQualityWidget
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  regularText: {
+    fontFamily: 'SF-Regular',
+    fontSize: 19,
+    lineHeight: 19,
+    color: 'white',
+  },
+})

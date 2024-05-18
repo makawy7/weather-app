@@ -38,7 +38,6 @@ const Widget = ({ children, style, width, height }: WidgetProps) => {
           borderColor: 'white',
           padding: 15,
           backgroundColor: '#201C48',
-          justifyContent: 'space-between',
         },
         style,
       ]}
@@ -68,14 +67,13 @@ Widget.Header = ({ Icon, name, iconProps }: WidgetHeaderProps) => {
 }
 
 type WidgetBodyProps = {
-  text: string
   children: React.ReactNode
+  extraStyle?: StyleProp<ViewStyle>
 }
 
-Widget.Body = ({ text, children }: WidgetBodyProps) => {
+Widget.Body = ({ children, extraStyle }: WidgetBodyProps) => {
   return (
-    <View style={{ flex: 1 }}>
-      <Text style={styles.regularText}>{text}</Text>
+    <View style={[{ flex: 1, justifyContent: 'center' }, extraStyle]}>
       {children}
     </View>
   )
@@ -90,7 +88,14 @@ type WidgetFooterProps = {
 
 Widget.Footer = ({ text, Icon, iconProps, extraStyle }: WidgetFooterProps) => {
   return (
-    <View style={[styles.flexRowBase, styles.justifyBetween, extraStyle]}>
+    <View
+      style={[
+        styles.flexRowBase,
+        styles.justifyBetween,
+        styles.autoMarginTop,
+        extraStyle,
+      ]}
+    >
       <Text style={styles.footerText}>{text}</Text>
       <Icon
         color={iconProps.color || 'rgba(235,235,245,0.6)'}
@@ -105,12 +110,15 @@ export default Widget
 
 const styles = StyleSheet.create({
   flexRowBase: {
-    flex: 1,
+    flexGrow: 0,
     flexDirection: 'row',
     alignItems: 'center',
   },
   justifyBetween: {
     justifyContent: 'space-between',
+  },
+  autoMarginTop: {
+    marginTop: 'auto',
   },
   title: {
     fontFamily: 'SF-Semibold',
@@ -118,12 +126,6 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: 'rgba(235, 235, 245, 0.6)',
     paddingLeft: 6,
-  },
-  regularText: {
-    fontFamily: 'SF-Regular',
-    fontSize: 19,
-    lineHeight: 19,
-    color: 'white',
   },
   footerText: {
     fontFamily: 'SF-Regular',
