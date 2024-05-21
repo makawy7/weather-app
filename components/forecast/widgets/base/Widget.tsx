@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: 'rgba(235, 235, 245, 0.6)',
     paddingLeft: 6,
+    textTransform: 'uppercase',
+    transform: [{ translateY: 2 }],
   },
   footerText: {
     fontFamily: 'SF-Regular',

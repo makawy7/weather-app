@@ -1,11 +1,22 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Widget, { WidgetDimensionProps } from './base/Widget'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 
 const PressureWidget: React.FC<WidgetDimensionProps> = ({ width, height }) => {
   return (
     <Widget width={width} height={height}>
-      <Text style={{ color: 'white' }}>PressureWidget</Text>
+      <Widget.Header
+        name="Pressure"
+        Icon={MaterialCommunityIcons}
+        iconProps={{ name: 'car-brake-low-pressure' }}
+      />
+      <Widget.Body
+        extraStyle={{ justifyContent: 'center', alignItems: 'center' }}
+      >
+        <AntDesign name="loading1" size={100} color="white" />
+      </Widget.Body>
     </Widget>
   )
 }

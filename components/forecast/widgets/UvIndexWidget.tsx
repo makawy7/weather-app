@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   SFRegular: {
     fontFamily: 'SF-Regular',
   },
-  SFSemiBild: {
+  SFSemiBold: {
     fontFamily: 'SF-Semibold',
   },
   SFThin: {
